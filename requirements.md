@@ -3,7 +3,7 @@ The goal of this project is to create a controller for a RGB programmable-per-li
 ###I. Professor Requirements
 1. The project shall use the `TIVA TM4C123GYL` board.
 2. The project shall incoporate serial / parrellel I/O.
-3. The project shall demonstrate usefulnes.  
+3. The project shall demonstrate usefulness.  
 4. The project shall have a manifestation in the physical world.  
 	
 ###II. External Hardware
