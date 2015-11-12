@@ -6,7 +6,9 @@ I. Professor Requirements
 	D. The project shall have a manifestation in the physical world.
 II. Hardware
 	A. The microprocessor shall connect to a programmable-per-light LED strip.
+	B. The keypad shall connect to the micropocessor and act as input.
 III. Software
 	A. The project shall have several different light patterns for the LED strip, able to be switched between.
 	B. At least one of the light patterns shall match the tune of "jingle bells"
 	C. At least one of the light patterns (excluding jingle bells) shall be christmas-themed.
+	D. The keypad will be programmed to have different patterns for different keys. 
