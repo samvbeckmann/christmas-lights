@@ -24,4 +24,8 @@ shall be "christmas-themed."
 
 ###IV. Misc
 1. A complete users manual shall be provided at time of
+<<<<<<< HEAD
 product presentation.
+=======
+product presentation.
+>>>>>>> a5d099bd20e94ff45ef630c65355a66631a3a671
