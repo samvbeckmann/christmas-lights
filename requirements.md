@@ -21,3 +21,7 @@ for the LED strip, able to be switched between.
 the tune of "jingle bells."
 3. At least one of the light patterns (excluding jingle bells)
 shall be "christmas-themed."
+
+###IV. Misc
+1. A complete users manual shall be provided at time of
+product presentation.
