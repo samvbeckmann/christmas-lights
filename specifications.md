@@ -57,7 +57,7 @@ All Patterns repeat indefinitely, until a new pattern is provided.
 10. Jingle Bells: Various lights turn on to the tune of jingle bells.
 11. Christmas Lights: Lights flash and light up in christmas colors.
 12. Fiesta: Lights pseduo-randomly flash in warm colors.
-13: Pac-Man: A simple one-dimensional demonstration of pac-man is shown.
-14: TBD
-15: TBD
-16: No lights.
+13. Pac-Man: A simple one-dimensional demonstration of pac-man is shown.
+14. TBD
+15. TBD
+16. No lights.
