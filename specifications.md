@@ -44,6 +44,7 @@ Version 0.1
 ####B. Patterns
 All Patterns repeat indefinitely, until a new pattern is provided.
 (Req I.3)
+
 1. Simple Chase: Sends one pixel down the line at a time, in varying colors.
 2. Theatre Chase: Lights every third pixel, to create illustion of many pixels moving.
 3. Ping-Pong: One pixel bounces back and forth across the strip.
