@@ -1,7 +1,7 @@
 # Requirements
 The goal of this project is to create a controller for a RGB programmable-per-light LED strip. When complete, the project should be able to display light sequences to a popular Christmas song, as well as contain various other light patterns.  
 
-Version 1.1
+Version 1.2
 
 ###I. Professor Requirements
 1. The project shall use the `TIVA TM4C123GYL` board.
@@ -13,6 +13,7 @@ Version 1.1
 1. The microprocessor shall connect to a programmable-per-light LED strip.
 2. The LED strip shall be powered through a standard US
 electrical outlet.
+3. A speaker will output the tune of "Jingle Bells" while that pattern is being displayed.
 	
 ###III. Software  
 1. The project shall have several different light patterns
@@ -21,6 +22,7 @@ for the LED strip, able to be switched between.
 the tune of "jingle bells."
 3. At least one of the light patterns (excluding jingle bells)
 shall be "christmas-themed."
+4. The project shall play the "Jingle Bells" tones while the light pattern is displayed. 
 
 ###IV. Misc
 1. A complete users manual shall be provided at time of
