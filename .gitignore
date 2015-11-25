@@ -1,0 +1,8 @@
+.launches/
+.settings/
+Debug/
+targetConfigs/
+.cssproject
+.cproject
+.project
+*.cmd
