@@ -2,7 +2,7 @@
 .settings/
 Debug/
 targetConfigs/
-.cssproject
+.ccsproject
 .cproject
 .project
 *.cmd
