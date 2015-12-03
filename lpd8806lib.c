@@ -103,7 +103,6 @@ void setRGB(uint16_t idx, uint8_t r, uint8_t g, uint8_t b) {
 		buffer[offset + 1] = r | 0x80;
 		buffer[offset + 2] = b | 0x80;
 	}
-
 }
 
 /**
