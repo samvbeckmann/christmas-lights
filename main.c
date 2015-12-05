@@ -28,7 +28,7 @@ int main(void) {
 	srand(time(NULL));
 	initLEDStrip();
 
-	activePattern = 14; // init active pattern to blank
+	activePattern = 7; // init active pattern to blank
 
 	while (1) {
 		switch (activePattern) {
@@ -36,7 +36,7 @@ int main(void) {
 			simpleChase(0, 1000000, activePattern);
 			break;
 		case 1:
-			theatreChase(0, 5000000, activePattern);
+			theatreChase(0, 2000000, activePattern);
 			break;
 		case 2:
 			pong(0, 1000000, activePattern);
@@ -54,7 +54,7 @@ int main(void) {
 			simpleChase(1, 1000000, activePattern);
 			break;
 		case 7:
-			theatreChase(1, 5000000, activePattern);
+			theatreChase(1, 2000000, activePattern);
 			break;
 		case 8:
 			pong(1, 500000, activePattern);
@@ -72,7 +72,7 @@ int main(void) {
 			runPredefPattern(10000000, pacman, 52, activePattern, 0);
 			break;
 		case 13:
-			// TODO Custom 1
+			america(1000000, activePattern);
 			break;
 		case 14:
 			tulsaPattern(1000000, activePattern);
@@ -182,7 +182,7 @@ void theatreChase(uint8_t rainbow, int delay, uint8_t currentPattern) {
 
 void performTheatre(uint8_t r, uint8_t g, uint8_t b, int delay,
 		uint8_t currentPattern) {
-	int i, j; // TODO not working yet.
+	int i, j;
 
 	resetStrip();
 
@@ -196,20 +196,22 @@ void performTheatre(uint8_t r, uint8_t g, uint8_t b, int delay,
 		SysCtlDelay(delay);
 
 		for (j = 0; j < 32; j += 3)
-			setRGB(i + j, 0, 0, 0);
+			setOff(i + j);
 	}
 }
 
 void performRainbowTheatre(int delay, uint8_t currentPattern) {
-	int i, j;
+	int i, j, k;
 
-	for (i = 0; i < 384; i++) {
+	resetStrip();
+
+	for (k = 0; k < 384; k+= 2) {
 		for (i = 0; i < 3; i++) {
 			if (activePattern != currentPattern)
-				return; // stop if pattern was changed.
+				return;
 
 			for (j = 0; j < 32; j += 3)
-				Wheel(i + j, i);
+				Wheel(i + j, k);
 
 			showStrip();
 
@@ -303,6 +305,25 @@ void persistantChase(int delay, uint8_t r, uint8_t g, uint8_t b, uint8_t current
 		setRGB(i, r, g, b);
 		showStrip();
 		SysCtlDelay(delay);
+	}
+}
+
+void america(int delay, uint8_t currentPattern) {
+	resetStrip();
+	int i, j;
+
+	while(1) {
+		for(i = 0; i < 3; i++) {
+			if(currentPattern != activePattern)
+				return;
+			for(j = 0; j < 32; j+=3) {
+				setRGB(j, i!=2?127:0, i=1?127:0, i!=0?127:0);
+				setRGB(j+1, i!=1?127:0, i=0?127:0, i!=2?127:0);
+				setRGB(j+2, i!=0?127:0, i=2?127:0, i!=1?127:0);
+			}
+			showStrip();
+			SysCtlDelay(delay);
+		}
 	}
 }
 
