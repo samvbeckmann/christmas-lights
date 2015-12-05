@@ -13,6 +13,8 @@
 
 uint8_t activePattern;
 
+// TODO move patterns functions to patterns.c
+
 /*
  * main.c
  *
@@ -26,7 +28,7 @@ int main(void) {
 	srand(time(NULL));
 	initLEDStrip();
 
-	activePattern = 3; // init active pattern to blank
+	activePattern = 14; // init active pattern to blank
 
 	while (1) {
 		switch (activePattern) {
@@ -73,7 +75,7 @@ int main(void) {
 			// TODO Custom 1
 			break;
 		case 14:
-			// TODO Custom 2
+			tulsaPattern(1000000, activePattern);
 			break;
 		case 15:
 			resetStrip();
@@ -290,6 +292,25 @@ void performRainbowPong(int delay, uint8_t currentPattern) {
 		showStrip();
 		setOff(31 - abs(i % 62 - 31));
 		SysCtlDelay(delay);
+	}
+}
+
+void persistantChase(int delay, uint8_t r, uint8_t g, uint8_t b, uint8_t currentPattern) {
+	int i;
+	for (i = 0; i < 32; i++) {
+		if (currentPattern != activePattern)
+			return;
+		setRGB(i, r, g, b);
+		showStrip();
+		SysCtlDelay(delay);
+	}
+}
+
+void tulsaPattern(int delay, uint8_t currentPattern) {
+	resetStrip();
+	while(currentPattern == activePattern) {
+		persistantChase(delay, 127, 68, 0, currentPattern);
+		persistantChase(delay, 0, 0, 127, currentPattern);
 	}
 }
 
