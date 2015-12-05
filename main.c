@@ -28,7 +28,7 @@ int main(void) {
 	srand(time(NULL));
 	initLEDStrip();
 
-	activePattern = 7; // init active pattern to blank
+	activePattern = 13; // init active pattern to blank
 
 	while (1) {
 		switch (activePattern) {
@@ -72,7 +72,7 @@ int main(void) {
 			runPredefPattern(10000000, pacman, 52, activePattern, 0);
 			break;
 		case 13:
-			america(1000000, activePattern);
+			america(5000000, activePattern);
 			break;
 		case 14:
 			tulsaPattern(1000000, activePattern);
@@ -317,9 +317,12 @@ void america(int delay, uint8_t currentPattern) {
 			if(currentPattern != activePattern)
 				return;
 			for(j = 0; j < 32; j+=3) {
-				setRGB(j, i!=2?127:0, i=1?127:0, i!=0?127:0);
-				setRGB(j+1, i!=1?127:0, i=0?127:0, i!=2?127:0);
-				setRGB(j+2, i!=0?127:0, i=2?127:0, i!=1?127:0);
+				setRGB(i+j, 127, 0, 0);
+				setRGB((i+j+1) % 33, 127, 127, 127);
+				setRGB((i+j+2) % 33, 0, 0, 127);
+//				setRGB(j, i!=2?127:0, i=1?127:0, i!=0?127:0);
+//				setRGB(j+1, i!=1?127:0, i=0?127:0, i!=2?127:0);
+//				setRGB(j+2, i!=0?127:0, i=2?127:0, i!=1?127:0);
 			}
 			showStrip();
 			SysCtlDelay(delay);
