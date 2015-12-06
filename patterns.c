@@ -1,10 +1,3 @@
-/*
- * patterns.c
- *
- *  Created on: Dec 5, 2015
- *      Author: Sam
- */
-
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -36,7 +29,7 @@ void activatePattern(uint8_t selectedPattern) {
 		rainbow(1, 100000, selectedPattern);
 		break;
 	case 5:
-		staticRainbow(); // TODO make accumulator
+		accPattern(500000, selectedPattern);
 		break;
 	case 6:
 		performRainbowChase(1000000, selectedPattern);
@@ -236,11 +229,32 @@ void rainbow(uint8_t cycle, int delay, uint8_t currentPattern) {
 	}
 }
 
-void staticRainbow() { // TODO remove
-	int i;
-	for (i = 0; i < 32; i++)
-		Wheel(i, i * 12);
-	showStrip();
+void accPattern(int delay, uint8_t currentPattern) {
+	while (currentPattern == activePattern) {
+		performAccumulator(127, 127, 127, delay, currentPattern);
+		performAccumulator(127, 0, 0, delay, currentPattern);
+		performAccumulator(127, 127, 0, delay, currentPattern);
+		performAccumulator(0, 127, 0, delay, currentPattern);
+		performAccumulator(0, 127, 127, delay, currentPattern);
+		performAccumulator(0, 0, 127, delay, currentPattern);
+		performAccumulator(127, 0, 127, delay, currentPattern);
+	}
+}
+
+void performAccumulator(uint8_t r, uint8_t g, uint8_t b, int delay, uint8_t currentPattern) {
+	int i, j;
+	for (i = 0; i < 32; i++) {
+		for (j = 0; j < 32 - i; j++){
+			if (currentPattern != activePattern)
+				return;
+			uint32_t prev = getPixelColor(j);
+			setRGB(j, r, g, b);
+			showStrip();
+			if (j < 31 - i)
+				setRGBCompact(j, prev);
+			SysCtlDelay(delay);
+		}
+	}
 }
 
 /**
