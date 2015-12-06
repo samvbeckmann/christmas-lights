@@ -91,7 +91,7 @@ void resetStrip() {
  */
 void fillStrip(uint8_t r, uint8_t g, uint8_t b) {
 	int i;
-	for (i=0; i < numLEDs; i++)
+	for (i = 0; i < numLEDs; i++)
 		setRGB(i, r, g, b);
 }
 
@@ -109,8 +109,5 @@ void setRGB(uint16_t idx, uint8_t r, uint8_t g, uint8_t b) {
  * Sets a given pixel to off
  */
 void setOff(uint16_t idx) {
-	uint16_t offset = idx * 3;
-	buffer[offset] = 0x80;
-	buffer[offset + 1] = 0x80;
-	buffer[offset + 2] = 0x80;
+	setRGB(idx, 0, 0, 0);
 }
