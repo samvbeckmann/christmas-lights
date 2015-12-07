@@ -12,8 +12,8 @@
 #include "predefPatterns.h"
 
 extern uint8_t activePattern;
-uint8_t note;
-uint8_t length;
+uint32_t note;
+uint32_t length;
 
 void activatePattern(uint8_t selectedPattern) {
 	resetStrip();
@@ -47,7 +47,7 @@ void activatePattern(uint8_t selectedPattern) {
 		performRainbowPong(500000, selectedPattern);
 		break;
 	case 9:
-		runPredefPattern(50000, jingle, 51, selectedPattern, 1);
+		runPredefPattern(500000, jingle, 51, selectedPattern, 1);
 		break;
 	case 10:
 		runChristmasLights(300000, selectedPattern);
