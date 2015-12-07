@@ -19,6 +19,7 @@ void decodeMatrixInput();
 /*
  * Prvoides initialization and the primary loop of the program.
  */
+
 int main(void) {
 
 	SysCtlClockSet(SYSCTL_SYSDIV_5 | SYSCTL_USE_PLL | SYSCTL_XTAL_16MHZ | SYSCTL_OSC_MAIN);
@@ -37,6 +38,9 @@ int main(void) {
 	GPIOIntEnable(GPIO_PORTC_BASE, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7);
 
 	GPIOPinWrite(GPIO_PORTA_BASE, GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5, 0);
+
+	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
+	GPIOPinTypeGPIOOutput(GPIO_PORTD_BASE, GPIO_PIN_0);
 
 	srand(time(NULL));
 

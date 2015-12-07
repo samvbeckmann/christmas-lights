@@ -8,11 +8,11 @@
 #ifndef PREDEFPATTERNS_H_
 #define PREDEFPATTERNS_H_
 
-#define C4 261
-#define D4 293
-#define E4 329
-#define F4 349
-#define G4 392
+#define C 261
+#define D 293
+#define E 329
+#define F 349
+#define G 392
 #define beat 50000
 
 uint8_t pacman[52][96] = { { 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80,
@@ -1303,7 +1303,7 @@ uint8_t jingle[51][96] = { { 0xff, 0x80, 0x80, 0xff, 0x80, 0x80, 0x80, 0xff,
 				0xff, 0xdd, 0xbb, 0xff, 0xdd, 0xbb, 0xff, 0xdd, 0xbb, 0x80,
 				0xff, 0x80, 0x80, 0xff, 0x80 } };
 
-uint_8t notes[102] = { E, beat, E, beat, E, beat * 2, E, beat, E, beat, E, beat
+uint32_t notes[102] = { E, beat, E, beat, E, beat * 2, E, beat, E, beat, E, beat
 		* 2, E, beat, G, beat, C, beat, D, beat, E, beat * 4, F, beat, F, beat,
 		F, beat, F, beat, F, beat, E, beat, E, beat, E, beat / 2, E, beat / 2,
 		E, beat, D, beat, D, beat, E, beat, D, beat * 2, G, beat * 2, E, beat,
