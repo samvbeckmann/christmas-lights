@@ -27,6 +27,7 @@ void
 	americaPattern(int delay, uint8_t currentPattern),
 	tulsaPattern(int delay, uint8_t currentPattern),
 	runChristmasLights(int delay, uint8_t activePattern),
-	runPredefPattern(int delay, uint8_t pattern[][], uint16_t patternLen, uint8_t currentPattern, uint8_t playBells);
+	runPredefPattern(int delay, uint8_t pattern[][], uint16_t patternLen, uint8_t currentPattern, uint8_t playBells),
+	playNote(uint32_t time, uint32_t delay);
 
 #endif /* PATTERNS_H_ */
