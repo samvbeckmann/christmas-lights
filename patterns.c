@@ -8,6 +8,8 @@
 #include "predefPatterns.h"
 
 extern uint8_t activePattern;
+uint8_t note;
+uint8_t length;
 
 void activatePattern(uint8_t selectedPattern) {
 	resetStrip();
@@ -41,7 +43,7 @@ void activatePattern(uint8_t selectedPattern) {
 		performRainbowPong(500000, selectedPattern);
 		break;
 	case 9:
-		// TODO Jingle Bells
+		runPredefPattern(0, jingle, 51, selectedPattern, 1);
 		break;
 	case 10:
 		runChristmasLights(300000, selectedPattern);
@@ -392,8 +394,19 @@ void runPredefPattern(int delay, uint8_t pattern[][96], uint16_t patternLen,
 			setRGB(j / 3, pattern[i][j], pattern[i][j + 1], pattern[i][j + 2]);
 		showStrip();
 		if (playBells) {
-			// playNote(i); /* Future support for playing Jingle Bells */
+			note = notes[2*i];
+			length = notes[2*i + 1];
+			playNote(note, length); /* Future support for playing Jingle Bells */
 		}
 		SysCtlDelay(delay);
+	}
+
+void playNote(uint32_t time, uint32_t delay) {
+	int totalTime = 0;
+	while(totalTime < time) {
+		GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_0, GPIO_PIN_0);
+		GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_0, 0);
+		SysCtlDelay(16000000/delay);
+		totalTime += 16000000/delay;
 	}
 }
