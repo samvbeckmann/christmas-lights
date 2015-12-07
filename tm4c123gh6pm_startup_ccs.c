@@ -54,7 +54,7 @@ extern uint32_t __STACK_TOP;
 // External declarations for the interrupt handlers used by the application.
 //
 //*****************************************************************************
-// To be added by user
+extern void decodeMatrixInput();
 
 //*****************************************************************************
 //
@@ -85,7 +85,7 @@ void (* const g_pfnVectors[])(void) =
     IntDefaultHandler,                      // The SysTick handler
     IntDefaultHandler,                      // GPIO Port A
     IntDefaultHandler,                      // GPIO Port B
-    IntDefaultHandler,                      // GPIO Port C
+    decodeMatrixInput,                      // GPIO Port C
     IntDefaultHandler,                      // GPIO Port D
     IntDefaultHandler,                      // GPIO Port E
     IntDefaultHandler,                      // UART0 Rx and Tx
