@@ -49,7 +49,7 @@ int main(void) {
 }
 
 void decodeMatrixInput() {
-	SysCtlDelay(5000000); // debounce wait
+	SysCtlDelay(1000000); // debounce wait
 	uint32_t input = GPIOPinRead(GPIO_PORTC_BASE, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7);
 
 	if ((input & 0xF0) != 0xF0) // try to decode if something is pushed.
@@ -74,6 +74,9 @@ void decodeMatrixInput() {
 			if (col != -1 && row != -1)
 				activePattern = row * 4 + col; // get the char of the button.
 		}
+
+	GPIOPinWrite(GPIO_PORTA_BASE, GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5, 0);
+
 	GPIOIntClear(GPIO_PORTC_BASE, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7);
-	SysCtlDelay(5000000); // wait to allow button to be lifted
+	SysCtlDelay(1000000); // wait to allow button to be lifted
 }
